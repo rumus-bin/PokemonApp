@@ -24,6 +24,5 @@ class PokemonServiceProvider extends ServiceProvider
         // Middleware register
         $router = $this->app['router'];
         $router->aliasMiddleware('only-ajax', OnlyAjax::class);
-
     }
 }
