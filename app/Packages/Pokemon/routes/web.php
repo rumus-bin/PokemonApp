@@ -1,10 +1,10 @@
 <?php
 
-use App\Packages\Acquire\Http\Controllers\PokemonController;
 use Illuminate\Support\Facades\Route;
+use Pokemon\Http\Controllers\PokemonController;
 
 Route::middleware('web')
     ->prefix('pokemons')
     ->group(static function () {
-    Route::get('/', [PokemonController::class, 'index']);
-});
+        Route::get('/', [PokemonController::class, 'index']);
+    });

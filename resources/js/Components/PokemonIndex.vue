@@ -14,7 +14,7 @@
                 <div class="grid w-full grid-cols-1 gap-2 mx-auto">
                     <div class="p-6 items-center justify-center">
                         <img
-                            class="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl"
+                            class="object-cover object-center w-full mb-8 lg:h-30 md:h-30 rounded-xl"
                             :src="pokemon.sprite_url"
                             :alt="pokemon.name"
                         >
@@ -98,7 +98,7 @@ export default {
         // }
 
         function getPokemons(page = 1) {
-            axios.get('/acquire/api/v1/pokemons?page=' + page)
+            axios.get('/pokemons/api/v1/pokemons?page=' + page)
                 .then((response) => {
                     // console.log(response.data.data)
                     state.totalData = response.data

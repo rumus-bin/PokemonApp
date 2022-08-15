@@ -11,7 +11,7 @@ class PokemonServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__ . '/routes/routes.php');
-        $this->loadViewsFrom(__DIR__ . '/resources/views', 'acquire');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'pokemon');
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
         // Console commands register
