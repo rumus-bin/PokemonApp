@@ -45,6 +45,7 @@ class PokemonManager
         try {
             $this->client->setOptions(self::POKEMON_RESOURCE . $sourceId);
             $pokemonData = $this->client->fetchData();
+            $pokemonData = json_decode($pokemonData, true);
             $storedPokemon = $this->storePokemon($pokemonData);
             $this->storeAbilitiesForPokemonId($pokemonData['abilities'], $storedPokemon->id);
             DB::commit();
