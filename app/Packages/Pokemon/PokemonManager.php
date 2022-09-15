@@ -2,6 +2,7 @@
 
 namespace Pokemon;
 
+use App\Packages\Pokemon\Services\RequestModifierInterface;
 use Pokemon\Models\Ability;
 use Pokemon\Models\Pokemon;
 use Pokemon\Repositories\AbilityRepository;
@@ -24,6 +25,13 @@ class PokemonManager
         $this->client = $client;
         $this->abilityRepository = app(AbilityRepository::class);
         $this->pokemonRepository = app(PokemonRepository::class);
+    }
+
+    public function getFilteredData(RequestModifierInterface $requestModifier): string
+    {
+        $requestModifier->modify($this->client);
+
+        return $this->client->fetchData();
     }
 
     /**
