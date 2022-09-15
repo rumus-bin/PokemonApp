@@ -21,7 +21,7 @@ class HttpPokemonClientTest extends TestCase
         ]);
         $client = new HttpPokemonClient();
         $client->setOptions($testUrl . 1);
-        $responseData = $client->fetchData();
+        $responseData = json_decode($client->fetchData(), true);
 
         $this->assertEquals($correctResponse['id'], $responseData['id']);
     }

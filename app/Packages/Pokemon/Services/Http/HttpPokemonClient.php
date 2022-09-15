@@ -18,10 +18,10 @@ class HttpPokemonClient implements ClientInterface
     }
 
     /**
-     * @return array
+     * @return string
      * @throws PokemonHttpClientException
      */
-    public function fetchData(): array
+    public function fetchData(): string
     {
        return $this->makeRequest();
     }
@@ -34,17 +34,15 @@ class HttpPokemonClient implements ClientInterface
     }
 
     /**
-     * @return array
+     * @return string
      * @throws PokemonHttpClientException
      */
-    private function makeRequest(): array
+    private function makeRequest(): string
     {
         $this->validateParameters();
         $requestUrl = $this->baseUrl . $this->requestParameters;
         try {
-            $response = Http::get($requestUrl);
-
-            return json_decode($response->getBody()->getContents(), true);
+            return Http::get($requestUrl)->body();
         } catch (\Throwable $exception) {
             throw new PokemonHttpClientException(
                 message: $exception->getMessage(),
