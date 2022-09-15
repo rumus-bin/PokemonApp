@@ -2,6 +2,7 @@
 
 namespace Pokemon;
 
+use App\Packages\Pokemon\Services\RequestModifierInterface;
 use Pokemon\Models\Ability;
 use Pokemon\Models\Pokemon;
 use Pokemon\Repositories\AbilityRepository;
@@ -26,6 +27,13 @@ class PokemonManager
         $this->pokemonRepository = app(PokemonRepository::class);
     }
 
+    public function getFilteredData(RequestModifierInterface $requestModifier): string
+    {
+        $requestModifier->modify($this->client);
+
+        return $this->client->fetchData();
+    }
+
     /**
      * @param int $sourceId
      * @return Pokemon
@@ -37,6 +45,7 @@ class PokemonManager
         try {
             $this->client->setOptions(self::POKEMON_RESOURCE . $sourceId);
             $pokemonData = $this->client->fetchData();
+            $pokemonData = json_decode($pokemonData, true);
             $storedPokemon = $this->storePokemon($pokemonData);
             $this->storeAbilitiesForPokemonId($pokemonData['abilities'], $storedPokemon->id);
             DB::commit();
