@@ -11,36 +11,38 @@ class HttpPokemonClient implements ClientInterface
     public const FIRST_CHAR_CHECK = '/';
     public const CHAR_OFFSET = 1;
 
-    private string $requestParameters = '';
-
-    private string $baseUrl = 'https://pokeapi.co/api/v2/';
+    public function __construct(
+        private ?string $baseUrl = 'https://pokeapi.co/api/v2/',
+        private ?string $requestParameters = ''
+    ) {
+    }
 
     /**
-     * @return array
+     * @return string
      * @throws PokemonHttpClientException
      */
-    public function fetchData(): array
+    public function fetchData(): string
     {
        return $this->makeRequest();
     }
 
-    public function setOptions($options): void
+    public function setOptions($options): self
     {
         $this->requestParameters = $options;
+
+        return $this;
     }
 
     /**
-     * @return array
+     * @return string
      * @throws PokemonHttpClientException
      */
-    private function makeRequest(): array
+    private function makeRequest(): string
     {
         $this->validateParameters();
         $requestUrl = $this->baseUrl . $this->requestParameters;
         try {
-            $response = Http::get($requestUrl);
-
-            return json_decode($response->getBody()->getContents(), true);
+            return Http::get($requestUrl)->body();
         } catch (\Throwable $exception) {
             throw new PokemonHttpClientException(
                 message: $exception->getMessage(),
