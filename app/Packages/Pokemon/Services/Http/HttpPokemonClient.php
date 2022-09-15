@@ -11,9 +11,11 @@ class HttpPokemonClient implements ClientInterface
     public const FIRST_CHAR_CHECK = '/';
     public const CHAR_OFFSET = 1;
 
-    private string $requestParameters = '';
-
-    private string $baseUrl = 'https://pokeapi.co/api/v2/';
+    public function __construct(
+        private ?string $baseUrl = 'https://pokeapi.co/api/v2/',
+        private ?string $requestParameters = ''
+    ) {
+    }
 
     /**
      * @return array
@@ -24,9 +26,11 @@ class HttpPokemonClient implements ClientInterface
        return $this->makeRequest();
     }
 
-    public function setOptions($options): void
+    public function setOptions($options): self
     {
         $this->requestParameters = $options;
+
+        return $this;
     }
 
     /**
