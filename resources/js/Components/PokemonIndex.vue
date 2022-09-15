@@ -66,16 +66,16 @@
         </div>
     </div>
     <div v-if="pokemonsLength" class="mt-10 p-4 flex flex-wrap justify-center">
-        <pagination :pagination="totalData" @page-changed="getPokemons"></pagination>
+<!--        <pagination :pagination="totalData" @page-changed="getPokemons"></pagination>-->
     </div>
 </template>
 <script>
 import {reactive, toRefs, computed, onMounted} from "vue";
-import Pagination from "@/Components/Inertia/Pagination.vue ";
+// import Pagination from "@/Components/Inertia/Pagination.vue ";
 
 export default {
     name: 'Home',
-    components: {Pagination},
+    // components: {Pagination},
     setup() {
         const state = reactive({
             pokemonsDataChunks: [],
