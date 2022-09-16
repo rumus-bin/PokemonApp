@@ -3,7 +3,6 @@
 namespace Pokemon\Http\Requests;
 
 use Pokemon\Models\Pokemon;
-use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property int $id

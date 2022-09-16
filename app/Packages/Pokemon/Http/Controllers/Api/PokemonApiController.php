@@ -2,6 +2,7 @@
 
 namespace Pokemon\Http\Controllers\Api;
 
+use App\Packages\Pokemon\Repositories\Services\PokemonDbService;
 use Pokemon\Http\Requests\PokemonStoreRequest;
 use Pokemon\Http\Requests\PokemonUpdateRequest;
 use Pokemon\Http\Resources\PokemonResource;
@@ -11,18 +12,18 @@ use Pokemon\Tools\Model\Paginator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Inertia\Response as InertiaResponse;
 
 class PokemonApiController extends Controller
 {
     public function __construct(
-        private PokemonRepository $pokemonRepository
+        private PokemonRepository $pokemonRepository,
+        private PokemonDbService $dbService
     ) {
     }
 
     /**
      * @param Request $request
-     * @return InertiaResponse
+     * @return JsonResponse
      */
     public function index(Request $request): JsonResponse
     {
@@ -43,17 +44,8 @@ class PokemonApiController extends Controller
      */
     public function store(PokemonStoreRequest $request): JsonResponse
     {
-         $pokemon = new Pokemon([
-             Pokemon::HEIGHT => $request->height,
-             Pokemon::WEIGHT => $request->weight,
-             Pokemon::SOURCE_ID => $request->source_id,
-             Pokemon::NAME => $request->name,
-             Pokemon::BASE_EXPERIENCE => $request->base_experience,
-             Pokemon::ORDER => $request->order,
-             Pokemon::SPRITE_URL => $request->sprite_url,
-             Pokemon::IS_DEFAULT => false
-         ]);
-        $pokemonStored = $this->pokemonRepository->store($pokemon);
+        $pokemonDto = $request->makeResourceDto();
+        $pokemonStored = $this->dbService->storeResource($pokemonDto);
 
         return response()->json($pokemonStored);
     }
@@ -64,7 +56,7 @@ class PokemonApiController extends Controller
      * @param  Pokemon  $pokemon
      * @return PokemonResource
      */
-    public function show(Pokemon $pokemon)
+    public function show(Pokemon $pokemon): PokemonResource
     {
         return new PokemonResource($pokemon);
     }
@@ -73,20 +65,12 @@ class PokemonApiController extends Controller
      * Update the specified resource in storage.
      *
      * @param PokemonUpdateRequest $request
-     * @param  Pokemon  $pokemon
      * @return PokemonResource
      */
-    public function update(PokemonUpdateRequest $request, Pokemon $pokemon)
+    public function update(PokemonUpdateRequest $request): PokemonResource
     {
-        $pokemon->name = $request->name;
-        $pokemon->weight = $request->weight;
-        $pokemon->height = $request->height;
-        $pokemon->source_id = $request->source_id;
-        $pokemon->order = $request->order;
-        $pokemon->base_experience = $request->base_experience;
-        $pokemon->sprite_url = $request->sprite_url;
-
-        $pokemon = $this->pokemonRepository->store($pokemon);
+        $pokemonDto = $request->makeResourceDto();
+        $pokemon = $this->dbService->storeResource($pokemonDto);
 
         return new PokemonResource($pokemon);
     }
@@ -94,12 +78,12 @@ class PokemonApiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Pokemon  $pokemon
+     * @param  Request  $request
      * @return JsonResponse
      */
-    public function destroy(Pokemon $pokemon)
+    public function destroy(Request $request): JsonResponse
     {
-        $this->pokemonRepository->delete($pokemon);
+        $this->pokemonRepository->deleteById($request->id);
 
         return response()->json(['code' => 204]);
     }
