@@ -2,10 +2,12 @@
 
 namespace Pokemon\Http\Requests;
 
+use App\Packages\Pokemon\Repositories\Services\PokemonResourceDto;
 use Pokemon\Models\Pokemon;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
+ * @property int|null $id
  * @property int $height
  * @property int $weight
  * @property int $source_id
@@ -27,5 +29,20 @@ class PokemonStoreRequest extends FormRequest
             Pokemon::SPRITE_URL => ['string', 'required'],
             Pokemon::BASE_EXPERIENCE => ['numeric', 'required']
         ];
+    }
+
+    public function makeResourceDto(): PokemonResourceDto
+    {
+        return new PokemonResourceDto(
+            $this->id,
+            $this->name,
+            $this->source_id,
+            $this->height,
+            $this->weight,
+            $this->order,
+            false,
+            $this->base_experience,
+            $this->sprite_url
+        );
     }
 }
