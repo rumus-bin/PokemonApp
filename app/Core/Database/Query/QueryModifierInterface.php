@@ -1,6 +1,6 @@
 <?php
 
-namespace Pokemon\Tools\Model;
+namespace App\Core\Database\Query;
 
 use Illuminate\Database\Eloquent\Builder;
 

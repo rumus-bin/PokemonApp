@@ -2,6 +2,8 @@
 
 namespace App\Packages\Pokemon\Repositories\Services;
 
+use App\Core\Database\Services\PersistenceServiceInterface;
+use App\Core\Database\Services\ResourceDtoInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Pokemon\Models\Pokemon;

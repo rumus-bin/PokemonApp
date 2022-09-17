@@ -2,11 +2,12 @@
 
 namespace Pokemon\Repositories;
 
-use Pokemon\Models\Ability;
-use Pokemon\Tools\Model\Paginator;
+use App\Core\Repositories\AbstractRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Pokemon\Models\Ability;
+use Pokemon\Tools\Model\Paginator;
 
 /**
  * @method LengthAwarePaginator|Ability[] findAll(?Paginator $paginator = null, array $relations = [])
