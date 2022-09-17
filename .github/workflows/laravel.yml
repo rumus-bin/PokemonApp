@@ -34,7 +34,7 @@ jobs:
     - name: Node setup
       run: |
         npm install
-        npm run build
+        npm run dev
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
