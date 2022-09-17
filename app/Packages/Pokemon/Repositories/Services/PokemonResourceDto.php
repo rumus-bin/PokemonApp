@@ -2,6 +2,8 @@
 
 namespace App\Packages\Pokemon\Repositories\Services;
 
+use App\Core\Database\Services\ResourceDtoInterface;
+
 class PokemonResourceDto implements ResourceDtoInterface
 {
     public function __construct(

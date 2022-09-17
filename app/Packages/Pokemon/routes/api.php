@@ -3,7 +3,11 @@
 use Pokemon\Http\Controllers\Api\PokemonApiController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['api', 'only-ajax'])
+Route::middleware([
+    'api',
+    'only-ajax',
+    'auth:sanctum'
+    ])
     ->prefix('pokemons/api')
     ->group(static function () {
         Route::prefix('v1')->group(static function () {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Packages\Pokemon\Repositories\Services;
+namespace App\Core\Database\Services;
 
 interface ResourceDtoInterface
 {

@@ -2,6 +2,7 @@
 
 namespace Pokemon\Tools\Model;
 
+use App\Core\Database\Query\QueryModifierInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator as PaginatorAlias;
