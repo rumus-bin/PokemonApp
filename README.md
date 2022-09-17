@@ -34,7 +34,7 @@ API Endpoints are also implemented:
 - DELETE: "http://localhost:8097/pokemons/api/v1/pokemons/{pokemjn_id}" - delete one resource
 API endpoints are only available for *Ajax* requests!
 
-All the back-end code for the application is located in the "app/Packages/Acquire" folder. The folder structure in this package is the same as for Laravel developers.
+All the back-end code for the application is located in the "app/Packages/Pokemon" folder. The folder structure in this package is the same as for Laravel developers.
 
 The frontend that I managed to implement is located in the standard folder "/resources/js"
 
