@@ -30,7 +30,7 @@ API Endpoints are also implemented:
 - GET: "http://localhost:8097/pokemons/api/v1/pokemons" - API index page.
 - POST: "http://localhost:8097/pokemons/api/v1/pokemons" - creation
 - GET: "http://localhost:8097/pokemons/api/v1/pokemons/{pokemjn_id}" - get one resource
-- PUT/PUTCH: "http://localhost:8097/pokemons/api/v1/pokemons/{pokemjn_id}" - update one resource
+- PUT/PATCH: "http://localhost:8097/pokemons/api/v1/pokemons/{pokemjn_id}" - update one resource
 - DELETE: "http://localhost:8097/pokemons/api/v1/pokemons/{pokemjn_id}" - delete one resource
 API endpoints are only available for *Ajax* requests!
 
