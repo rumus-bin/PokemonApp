@@ -1,5 +1,6 @@
 <?php
 
+use RumusBin\AttributesRouter\AttributesRouterProvider;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -187,6 +188,7 @@ return [
          */
 
         Pokemon\PokemonServiceProvider::class,
+        AttributesRouterProvider::class,
 
         /*
          * Application Service Providers...

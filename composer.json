@@ -29,7 +29,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Pokemon\\": "app/Packages/Pokemon"
+            "Pokemon\\": "app/Packages/Pokemon/",
+            "RumusBin\\AttributesRouter\\": "app/Packages/RumusBin/AttributesRouter"
         }
     },
     "autoload-dev": {
