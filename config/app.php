@@ -1,7 +1,7 @@
 <?php
 
-use RumusBin\AttributesRouter\AttributesRouterProvider;
 use Illuminate\Support\Facades\Facade;
+use RumusBin\AttributesRouter\src\AttributesRouterProvider;
 
 return [
 

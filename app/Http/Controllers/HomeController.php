@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Packages\RumusBin\AttributesRouter\RoteAttributes\Get;
-use RumusBin\AttributesRouter\RouterLoader;
+use RumusBin\AttributesRouter\src\RoteAttributes\Get;
+use RumusBin\AttributesRouter\src\RouterLoader;
 
 class HomeController extends Controller
 {
@@ -16,7 +16,6 @@ class HomeController extends Controller
     #[Get('/')]
     public function index()
     {
-        $this->routerLoader->loadControllers();
         return view('welcome');
     }
 }

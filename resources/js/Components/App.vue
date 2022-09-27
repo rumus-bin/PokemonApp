@@ -1,16 +1,26 @@
 <template>
     <div class="p-14">
-        <router-link class="flex justify-center test-4xl text-yellow-700" to="/">Home</router-link>
-<!--        <router-link class="flex justify-center test-4xl text-yellow-700" to="/about/1">About</router-link>-->
+        <h2>Hello from app Vue</h2>
+        <assignments-list title="Assignments list" />
     </div>
-    <router-view></router-view>
 </template>
 
 <script>
+import AssignmentsList from "@/Components/AssignmentsList.vue";
 export default {
-   setup () {
-
-   }
+   name: "App",
+    components: {
+       AssignmentsList
+    },
+    data () {
+       return {
+           assignments: [
+               {id: 1, title: "First Assignment", completed: false},
+               {id: 2, title: "Second Assignment", completed: false},
+               {id: 3, title: "Third Assignment", completed: false},
+           ]
+       }
+    }
 }
 </script>
 
