@@ -7,8 +7,8 @@
         <title>Test task</title>
         @vite('resources/css/app.css')
     </head>
-    <body class="antialiased">
-       <div id="app"></div>
+    <body class="h-full grid place-items-center bg-gray-800 text-white">
+       <div id="app" class="grid justify-center mt-20"></div>
         @vite('resources/js/app.js')
     </body>
 </html>

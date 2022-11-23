@@ -9,7 +9,7 @@
 
     <title>Pokemon</title>
 </head>
-<body class="aciquire-pokemon-body">
+<body class="h-full grid place-items-center bg-gray-800 text-white">
     <div id="aciquire_pokemon_app"></div>
     @vite('resources/js/app.js')
 </body>
