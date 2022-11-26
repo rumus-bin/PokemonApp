@@ -21,9 +21,9 @@ export default {
     data () {
         return {
             assignments: [
-                {id: 1, name: 'First assignments', completed: false},
-                {id: 2, name: 'Second assignments', completed: false},
-                {id: 3, name: 'Third assignments', completed: false}
+                {id: 1, name: 'First assignments', completed: false, tag: 'science'},
+                {id: 2, name: 'Second assignments', completed: false, tag: 'biology'},
+                {id: 3, name: 'Third assignments', completed: false, tag: 'design'}
             ],
         }
     },
