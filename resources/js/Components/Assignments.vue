@@ -20,11 +20,7 @@ export default {
     },
     data () {
         return {
-            assignments: [
-                {id: 1, name: 'First assignments', completed: false, tag: 'science'},
-                {id: 2, name: 'Second assignments', completed: false, tag: 'biology'},
-                {id: 3, name: 'Third assignments', completed: false, tag: 'design'}
-            ],
+            assignments: [],
         }
     },
     computed: {
@@ -43,6 +39,10 @@ export default {
                 id: this.assignments.length++
             });
         }
+    },
+    created() {
+        axios('http://localhost:3001/assignments')
+            .then(res => this.assignments = res.data);
     }
 }
 </script>

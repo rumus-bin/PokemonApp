@@ -1,0 +1,11 @@
+{
+    "assignments": [
+        {"id": 1, "name": "First assignments science", "completed": false, "tag": "science"},
+        {"id": 2, "name": "Second assignments science", "completed": false, "tag": "science"},
+        {"id": 3, "name": "Third assignments physics", "completed": false, "tag": "physics"},
+        {"id": 4, "name": "Fourth assignments physics", "completed": false, "tag": "physics"},
+        {"id": 5, "name": "Fifth assignments math", "completed": false, "tag": "math"},
+        {"id": 6, "name": "Sixth assignments math", "completed": false, "tag": "math"},
+        {"id": 7, "name": "Seventh assignments biology", "completed": false, "tag": "biology"}
+    ]
+}

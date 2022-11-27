@@ -6,7 +6,7 @@
         </h2>
         <AssignmentTag
             :initial-tags="assignments.map(a => a.tag)"
-            @checkTag="checkTag"
+            v-model:currentTag="currentTag"
         >
         </AssignmentTag>
         <ul class="border border-gray-600 divide-y mt-4">
@@ -28,7 +28,8 @@ export default {
     name: "AssignmentsList",
     data () {
         return {
-            currentTag: ''
+            currentTag: '',
+            checkedTag: ''
         }
     },
     components: {
@@ -41,17 +42,15 @@ export default {
     },
     computed: {
         filteredAssignments() {
-            if (this.currentTag) {
+            if (this.currentTag && this.currentTag !== 'all') {
                 return this.assignments.filter(a => a.tag === this.currentTag);
             }
-
-            return this.assignments;
+            if (this.currentTag === 'all' || !this.currentTag) {
+                return this.assignments;
+            }
         }
     },
     methods: {
-        checkTag(tag) {
-            this.currentTag = tag
-        }
     }
 }
 </script>
