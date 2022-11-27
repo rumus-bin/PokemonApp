@@ -1,9 +1,16 @@
 <template>
-    <section>
-        <h2 class="text-base text-2xl">
-            {{ title }}
-            <span>({{assignments.length}})</span>
-        </h2>
+    <section v-show="assignments.length" class="w-80">
+        <div class="flex justify-between items-start">
+            <h2 class="text-base text-2xl">
+                {{ title }}
+                <span>({{assignments.length}})</span>
+            </h2>
+            <button
+                v-show="canToggle"
+                @click="$emit('toggleView')"
+            >&times;</button>
+        </div>
+
         <AssignmentTag
             :initial-tags="assignments.map(a => a.tag)"
             v-model:currentTag="currentTag"
@@ -17,6 +24,7 @@
             >
             </Assignment>
         </ul>
+        <slot></slot>
     </section>
 </template>
 
@@ -38,7 +46,8 @@ export default {
     },
     props: {
         assignments: Array,
-        title: String
+        title: String,
+        canToggle: {type: Boolean, default: false}
     },
     computed: {
         filteredAssignments() {

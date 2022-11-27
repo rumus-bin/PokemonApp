@@ -1,9 +1,23 @@
 <template>
-    <section class="space-y-6">
-        <AssignmentsList v-if="filters.active.length" :assignments="filters.active" title="Active assignments"></AssignmentsList>
-        <AssignmentsList v-if="filters.completed.length" :assignments="filters.completed" title="Completed assignments"></AssignmentsList>
+    <section class="space-y-6 flex gap-8">
+        <AssignmentsList
+            v-if="filters.active.length"
+            :assignments="filters.active"
+            title="Active assignments"
+        >
+            <AssignmentCreate @add="add"></AssignmentCreate>
+        </AssignmentsList>
+        <AssignmentsList
+            v-show="canShow"
+            v-if="filters.completed.length"
+            :assignments="filters.completed"
+            title="Completed assignments"
+            can-toggle
+            @toggleView="canShow = !canShow"
+        >
 
-        <AssignmentCreate @add="add"></AssignmentCreate>
+        </AssignmentsList>
+
     </section>
 
 </template>
@@ -21,6 +35,7 @@ export default {
     data () {
         return {
             assignments: [],
+            canShow: true
         }
     },
     computed: {
