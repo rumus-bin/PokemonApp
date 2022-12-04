@@ -4,6 +4,7 @@
     </div>
 
     <section class="space-y-6 flex gap-8 justify-items-stretch">
+        <Button />
         <AssignmentsList
             :theme="theme"
             v-if="filters.active.length"
@@ -31,12 +32,14 @@
 <script>
 import AssignmentsList from "@/Components/AssignmentsList.vue";
 import AssignmentCreate from "@/Components/AssignmentCreate.vue";
+import Button from "@/Components/Button.vue";
 
 export default {
     name: "Assignments",
     components: {
-      AssignmentsList,
-      AssignmentCreate
+        AssignmentsList,
+        AssignmentCreate,
+        Button
     },
     data () {
         return {
