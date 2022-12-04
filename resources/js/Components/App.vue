@@ -1,5 +1,7 @@
 <template>
-    <assignments />
+    <div class="grid gap-6">
+        <Assignments></Assignments>
+    </div>
 </template>
 
 <script>
